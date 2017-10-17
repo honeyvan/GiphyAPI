@@ -1,0 +1,42 @@
+body {
+	font-family: verdana;
+	background-color: lightgray;
+}
+
+button, input[type=submit] {
+	background-color: teal;
+	color: #fff;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+p, label {
+	font-weight: bold;
+	font-size: 13px;
+}
+
+button, img, p {
+	margin: 5px;
+}
+
+input {
+	margin-top: 5px;
+}
+
+form {
+	float: right;
+	margin: 0 25px;
+}
+
+#gifs {
+	width: 70%;
+}
+
+.dessert {
+	display: inline-block;
+}
+
+#dessertBtns {
+	margin-bottom: 15px;
+}
