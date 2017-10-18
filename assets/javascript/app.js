@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-  var desserts = [];
+  var desserts = ["cake","pie","cupcakes"];
+  createButtons();
 
   function createButtons() {
 
@@ -46,7 +47,7 @@ $(document).ready(function() {
       })
         .done(function(response) {
           var results = response.data;
-          console.log(queryURL);
+          console.log(response);
           for (var i = 0; i < results.length; i++) {
 
             // Creating and storing a div tag
@@ -56,18 +57,33 @@ $(document).ready(function() {
             // Creating a paragraph tag with the result item's rating
             var p = $("<p>").text("Rating: " + results[i].rating);
 
-            // Creating and storing an image tag
             var dessertImage = $("<img>");
-            // Setting the src attribute of the image to a property pulled off the result item
+    
             dessertImage.attr("src", results[i].images.fixed_height.url);
+            dessertImage.attr("stillAnimate","animate");
+            // use fixed_height_still.url for the image still
+            //if data-still whatever = still, change url & animate, vice versa
+            dessertImage.addClass("gif");
 
             // Appending the paragraph and image tag to the dessertDiv
             dessertDiv.append(p);
             dessertDiv.append(dessertImage);
 
             $("#gifs").prepend(dessertDiv);
-          }
-        });
+          } //close for loop
+        }); //close ajax .done
+    } //close if !== undefined
+  }); //close click button
+
+  $(document).on("click","img", function() {
+    if ($(this).attr("stillAnimate") == "animate") {
+      $(this).attr("src", results[i].images.fixed_height_still.url); // need to be in ajax to call
+      $(this).attr("stillAnimate", "still"); 
     }
-  });
+    else if ($(this).attr("stillAnimate") == "still") {
+      $(this).attr("src", results[i].images.fixed_height.url);
+      $(this).attr("stillAnimate", "animate"); 
+    }
+  }); //close click img
+
 });
