@@ -1,10 +1,11 @@
 body {
 	font-family: verdana;
-	background-color: lightgray;
+	background-color: #f7f7ea;
+	background-image: url("background.png");
 }
 
 button, input[type=submit] {
-	background-color: teal;
+	background-color: rgba(243, 53, 115, 0.75);
 	color: #fff;
 	border: none;
 	padding: 5px 10px;
